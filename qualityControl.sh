@@ -1,6 +1,6 @@
 #!/bin/bash
 
-threads=8
+threads=16
 
 # quality before trimming
 for i in data/input/*_1.fastq.gz 
