@@ -20,14 +20,14 @@ for i in data/input/*_1.fastq.gz
 do 
     R1=${i}
     R2="data/input/"$(basename ${i} _1.fastq.gz)"_2.fastq.gz"
-    trim_galore -j ${threads} --length 20 --quality 20 --clip_R1 7 --clip_R2 7 -o data/outputs/trimmedData --paired ${R1} ${R2}
+    trim_galore -j ${threads} --length 20 --quality 20 --clip_R1 7 --clip_R2 7 -o data/outputs/trimmedData/trim_galore --paired ${R1} ${R2}
 done
 
 # additional trimming + fastqc
-for i in data/outputs/trimmedData/*_1_val_1.fq.gz 
+for i in data/outputs/trimmedData/trim_galore/*_1_val_1.fq.gz 
 do 
     R1=${i}
-    R2="data/outputs/trimmedData/"$(basename ${i} _1_val_1.fq.gz)"_2_val_2.fq.gz"
+    R2="data/outputs/trimmedData/trim_galore/"$(basename ${i} _1_val_1.fq.gz)"_2_val_2.fq.gz"
     R1B="data/outputs/trimmedData/bbduk/"$(basename ${i} _1_val_1.fq.gz)"_1.fq.gz"
     R2B="data/outputs/trimmedData/bbduk/"$(basename ${i} _1_val_1.fq.gz)"_2.fq.gz"
     R1T="data/outputs/trimmedData/tadpole/"$(basename ${i} _1_val_1.fq.gz)"_1.fq.gz"

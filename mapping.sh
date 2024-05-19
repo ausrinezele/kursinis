@@ -28,3 +28,9 @@ do
        samtools flagstat ${BAM_S} > ${FLAG}
     done
 done
+
+# RAST notes
+# 1434680 -> Sp_2
+# 1434681 -> Sp_5
+# 1434694 -> NC_003028
+# 1434696 -> NC_010380
