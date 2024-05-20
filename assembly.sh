@@ -13,7 +13,7 @@ do
 done
 
 # contigs reorder
-ragtag.py scaffold data/input/ref_genome/NC_010380.fasta data/outputs/contigs/Sp_2_EKDN240022001-1A_22772HLT4_L8.fasta -o data/outputs/ragtag/Sp_2
+ragtag.py scaffold data/input/ref_genome/NC_003028.fasta data/outputs/contigs/Sp_2_EKDN240022001-1A_22772HLT4_L8.fasta -o data/outputs/ragtag/Sp_2
 ragtag.py scaffold data/input/ref_genome/NC_010380.fasta data/outputs/contigs/Sp_5_EKDN240022002-1A_22772HLT4_L7.fasta -o data/outputs/ragtag/Sp_5
 
 # busco analyse, searching for predicted genes
