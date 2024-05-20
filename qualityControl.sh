@@ -35,8 +35,13 @@ do
     R2T="data/outputs/trimmedData/tadpole/"$(basename ${i} _1_val_1.fq.gz)"_2.fq.gz"
     R1F="data/outputs/trimmedData/final/"$(basename ${i} _1_val_1.fq.gz)"_1.fq.gz"
     R2F="data/outputs/trimmedData/final/"$(basename ${i} _1_val_1.fq.gz)"_2.fq.gz"
+   # R1_fastq="data/outputs/trimmedData/final/"$(basename ${i} _1_val_1.fq.gz)"_1.fastq"
+   # R2_fastq="data/outputs/trimmedData/final/"$(basename ${i} _1_val_1.fq.gz)"_2.fastq"
     /mnt/c/Users/ausri/Downloads/BBMap_39.06/bbmap/bbduk.sh in=${R1} in2=${R2} out=${R1B} out2=${R2B} qtrim=r trimq=30 -minlength=18
     /mnt/c/Users/ausri/Downloads/BBMap_39.06/bbmap/tadpole.sh in=${R1B} in2=${R2B} out=${R1T} out2=${R2T} mode=correct k=15 overwrite=true tossuncorrectable=true prefilter
     /mnt/c/Users/ausri/Downloads/BBMap_39.06/bbmap/bbnorm.sh in=${R1T} in2=${R2T} out=${R1F} out2=${R2F} min=2 threads=${threads}
+   # jellyfish count -C -m 21 -s 200M -t ${threads} -o data/outputs/quality/k_mer/after/"$(basename ${i} _1_val_1.fq.gz )"_kmer_counts.jf ${R1_fastq} ${R2_fastq}
+   # jellyfish histo -o data/outputs/quality/k_mer/after/"$(basename ${i} _1.fastq.gz)"_histrogram.txt data/outputs/quality/k_mer/after/"$(basename ${i} _1.fastq.gz)"_kmer_counts.jf
+   # python3 histogram.py data/outputs/quality/k_mer/after/"$(basename ${i} _1.fastq.gz)"_histrogram.txt data/outputs/quality/k_mer/after/"$(basename ${i} _1.fastq.gz)"_histrogram.png
     fastqc -t ${threads} ${R1F} ${R2F} -o data/outputs/quality/after
 done
